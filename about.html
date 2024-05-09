@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Title</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <style>
+    .slider {
+    display: flex;
+    overflow: hidden;
+    margin: 20px;
+    justify-content: center; 
+
+}
+
+.slider img {
+    width: 700px; 
+    height: 400px; 
+    object-fit: cover;
+    display: none; 
+}
+
+.slider img:first-child {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+}
+
+@media(max-width: 320px) {
+    .image-section img,
+    .slider img {
+        width: 100px; 
+        height: 80px; 
+    }
+    #projects{
+        margin: 0 auto;
+    }
+    #education{
+        margin: 0 auto;
+    }
+}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html"><button class="btn">Home</button></a>
+    <a href="about.html"><button class="btn">About Me</button></a>
+    <a href="projects.html"><button class="btn">Projects</button></a>
+    <a href="contact.html"><button class="btn">Contact</button></a>
+  </nav>
+
+  <h1>About Me</h1>
+  <div id="hobbies">
+    <p>Badminton, Basketball, Chess, Cross Country, and many more</p>
+
+    <div class="slider">
+        <img src="images/badminton.jpg" alt="badminton">
+        <img src="images/basketball.jpg" alt="basketball">
+        <img src="images/chess.jpg" alt="chess">
+        <img src="images/XC.jpg" alt="Cross Country">
+    </div>
+</div>
+
+</body>
+
+<footer>
+  <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target=”_blank”><p>&copy; Zhejie Jiang 2023</p></a>
+</footer>
+
+</html>

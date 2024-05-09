@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html"><button class="btn">Home</button></a>
+        <a href="about.html"><button class="btn">About Me</button></a>
+        <a href="projects.html"><button class="btn">Projects</button></a>
+        <a href="contact.html"><button class="btn">Contact</button></a>
+    </nav>
+    <h1>Contact Form</h1>
+    <div class="content" id="forms">
+        <p>Please fill out this form with the required information</p>
+        <form onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Enter Your First and Last Name:</label>
+                <input id="name" type="text" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Enter Your Email:</label>
+                <input id="email" type="email" required pattern=".*@.*" />
+            </div>
+            <div class="form-group">
+                <label for="text">Write the text you want to send to me!</label>
+                <br>
+                <textarea id="text" required></textarea>
+            </div>
+            <input type="submit" value="Submit" id="submit" />
+        </form>
+        <br>
+        <h2>Or</h2>
+        <h1>Reach out to me through</h1>
+        <p>Email: zhejiejiang@gmail.com</p>
+        <p>Phone Number: 911</p>
+    </div>
+
+
+    <footer>
+        <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target=”_blank”><p>&copy; Zhejie Jiang 2023</p></a>
+    </footer>
+
+
+
+
+
+
+    <script>      
+        function validateForm() {
+            var nameInput = document.getElementById("name");
+            var emailInput = document.getElementById("email");
+            var textInput = document.getElementById("text");
+
+            if (nameInput.value.trim() === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            if (!isValidEmail(emailInput.value)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (textInput.value.trim() === "") {
+                alert("Please write your message.");
+                return false;
+            }
+
+            showThankYouMessage();
+            return false; 
+        }
+
+        function isValidEmail(email) {
+            var emailPattern = /^\S+@\S+\.\S+$/;
+            return emailPattern.test(email);
+        }
+
+        function showThankYouMessage() {
+            alert("Thank you for sending the form! We will get back to you soon.");
+            window.location.href = "contact.html";
+
+        }
+    </script>
+</body>
+
+</html>
