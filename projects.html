@@ -4,9 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhejie Jiang | Portfolio</title>
+    <script>
+      (function() {
+        var s = localStorage.getItem('portfolio-theme');
+        var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', (s === 'dark' || (!s && d)) ? 'dark' : 'light');
+      })();
+    </script>
+    <meta name="description" content="Selected projects by Zhejie Jiang — web apps, games, and CS coursework demos.">
+    <title>Projects | Zhejie Jiang</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,67 +23,82 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="navbar">
         <div class="logo">ZJ</div>
+        <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <button type="button" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="icon-light" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            <span class="icon-dark" aria-hidden="true"><i class="fas fa-moon"></i></span>
+        </button>
     </nav>
 
-    <div class="projects">
+    <div class="projects" id="main-content">
         <div class="project">
-            <h2>Project 1</h2>
-            <img src="/images/p1.png">
-            <p>Firebase Project</p>
+            <h2>Firebase Demo</h2>
+            <img src="images/p1.png" alt="Firebase Project screenshot">
+            <p>Web app using Firebase for auth and data. Built to explore real-time backend and hosting.</p>
+            <span class="project-tag">Firebase</span>
             <a href="https://zhejiej.github.io/firebase_project/" target=”_blank” class="pbtn">View Project</a>
         </div>
         <div class="project">
-            <h2>Project 2</h2>
-            <img src="images/p2.png">
-            <p>RPS_TeachableMachine</p>
+            <h2>Rock Paper Scissors (ML)</h2>
+            <img src="images/p2.png" alt="Rock Paper Scissors Teachable Machine screenshot">
+            <p>Browser game using Google Teachable Machine for hand-gesture recognition. Play RPS against the camera.</p>
+            <span class="project-tag">Teachable Machine</span>
             <a href="https://zhejiej.github.io/rockPaperScissors_teachableMachine/" target=”_blank” class="pbtn">View
                 Project</a>
         </div>
         <div class="project">
-            <h2>Project 3</h2>
-            <img src="images/p3.png">
-            <p>Empathy</p>
+            <h2>Empathy</h2>
+            <img src="images/p3.png" alt="Empathy project screenshot">
+            <p>Collaborative project: an interactive experience exploring empathy and perspective-taking.</p>
+            <span class="project-tag">Web</span>
             <a href="https://izbuzz.github.io/emPathy/" target=”_blank” class="pbtn">View Project</a>
         </div>
         <div class="project">
-            <h2>Project 4</h2>
-            <img src="images/p4.png">
-            <p>Matching Game</p>
+            <h2>Matching Game</h2>
+            <img src="images/p4.png" alt="Matching Game screenshot">
+            <p>Classic card-matching memory game. Match pairs under the fewest moves.</p>
+            <span class="project-tag">JavaScript</span>
             <a href="https://zhejiej.github.io/OldProject-MatchingGame/" target=”_blank”
                 class="pbtn">View Project</a>
         </div>
         <div class="project">
-            <h2>Project 5</h2>
-            <img src="images/p5.png">
-            <p>Retro Pong</p>
+            <h2>Retro Pong</h2>
+            <img src="images/p5.png" alt="Retro Pong game screenshot">
+            <p>Browser-based Pong with a retro look. Two-player or vs simple AI.</p>
+            <span class="project-tag">Replit</span>
             <a href="https://b8f7f61a-82e2-4412-baed-117532b02185-00-f9push1yv5zf.kirk.replit.dev/" target=”_blank”
                 class="pbtn">View Project</a>
         </div>
         <div class="project">
-            <h2>Project 6</h2>
-            <img src="images/p6.png">
-            <p>Roll the Dice</p>
+            <h2>Roll the Dice</h2>
+            <img src="images/p6.png" alt="Roll the Dice app screenshot">
+            <p>Simple dice-rolling app for games and decisions. Roll one or multiple dice with a tap.</p>
+            <span class="project-tag">Replit</span>
             <a href="https://0ce5c2c0-485e-4045-9af2-e8b5c66d31fc-00-1wzfe8y56ud28.janeway.replit.dev/" target=”_blank”
                 class="pbtn">View Project</a>
         </div>
     </div>
+    <script src="js/main.js"></script>
 </body>
 
 <!-- Footer -->
 <footer>
     <div class="socials">
-        <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank"><i
+        <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
                 class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Zhejiej" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Zhejiej" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </div>
     <p>&copy; 2025 Zhejie Jiang </p>
 </footer>

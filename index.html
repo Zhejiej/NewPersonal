@@ -4,9 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (function() {
+        var s = localStorage.getItem('portfolio-theme');
+        var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', (s === 'dark' || (!s && d)) ? 'dark' : 'light');
+      })();
+    </script>
+    <meta name="description" content="Zhejie (Jacky) Jiang — Software Engineer and CS student at the University of Chicago. Portfolio, projects, and contact.">
     <title>Zhejie Jiang | Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -14,23 +22,31 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body onload="main();">
+<body class="page-home">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Starry Background -->
     <div class="stars"></div>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">ZJ</div>
+        <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <button type="button" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="icon-light" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            <span class="icon-dark" aria-hidden="true"><i class="fas fa-moon"></i></span>
+        </button>
     </nav>
 
     <!-- Main Section -->
-    <section class="main">
+    <section class="main" id="main-content">
         <div class="text">
             <h1>Hi, I'm <span>Zhejie Jiang</span></h1>
             <h2>Software Engineer</h2>
@@ -44,43 +60,25 @@
                 <a href="about.html" class="btn outline">About Me</a>
             </div>
             <div class="socials">
-                <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank"><i
+                <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
                         class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Zhejiej" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Zhejiej" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
 
     </section>
 
-    <script>
-        function stars() {
-            let e = document.createElement('div');
-            e.setAttribute('class', 'star');
-            document.body.appendChild(e);
-            e.style.left = Math.random() * + innerWidth + 'px';
-
-            let size = Math.random() * 15;
-            e.style.fontSize = 12 + size + 'px';
-
-            setTimeout(function () {
-                document.body.removeChild(e);
-            }, 6000)
-        }
-        setInterval(function () {
-            stars()
-        }, 100)
-
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 <!-- Footer -->
 <footer>
     <div class="socials">
-        <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank"><i
+        <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
                 class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Zhejiej" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/jk.y_06/?hl=en/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Zhejiej" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </div>
     <p>&copy; 2025 Zhejie Jiang </p>
 </footer>
