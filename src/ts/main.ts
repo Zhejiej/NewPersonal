@@ -7,10 +7,59 @@ function init(): void {
   initTheme();
   setNavActive();
   initMobileNav();
+  initContactForm();
   if (document.body.classList.contains('page-home')) {
     startStarAnimation();
     initBubbles();
   }
+}
+
+/**
+ * Contact form: submit via fetch, then show success message without leaving the page.
+ */
+function initContactForm(): void {
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('form-success');
+  const submitBtn = document.getElementById('submit-btn');
+  if (!form || !successEl) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+    (submitBtn as HTMLButtonElement).disabled = true;
+    (submitBtn as HTMLButtonElement).textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    fetch(form.action, { method: 'POST', body: formData })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          form.hidden = true;
+          successEl.hidden = false;
+        } else {
+          (submitBtn as HTMLButtonElement).disabled = false;
+          (submitBtn as HTMLButtonElement).textContent = 'Submit';
+          if (successEl.previousElementSibling === form) {
+            const err = document.createElement('p');
+            err.className = 'form-error';
+            err.setAttribute('role', 'alert');
+            err.textContent = 'Something went wrong. Please try again or email directly.';
+            form.after(err);
+          }
+        }
+      })
+      .catch(() => {
+        (submitBtn as HTMLButtonElement).disabled = false;
+        (submitBtn as HTMLButtonElement).textContent = 'Submit';
+        const err = form.nextElementSibling;
+        if (err?.classList?.contains('form-error')) return;
+        const errEl = document.createElement('p');
+        errEl.className = 'form-error';
+        errEl.setAttribute('role', 'alert');
+        errEl.textContent = 'Something went wrong. Please try again or email directly.';
+        form.after(errEl);
+      });
+  });
 }
 
 /**

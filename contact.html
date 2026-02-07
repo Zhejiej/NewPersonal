@@ -13,6 +13,7 @@
     </script>
     <meta name="description" content="Get in touch with Zhejie Jiang. Email and contact form for inquiries.">
     <title>Contact | Zhejie Jiang</title>
+    <link rel="icon" href="favicon.png" type="image/png">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -48,7 +49,7 @@
         </p>
         <p class="contact-subtext">Feel free to reach out with any inquiries!</p>
 
-        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="d6f2caf9-a81f-435c-a188-7a348fc612eb">
 
             <div class="form-row">
@@ -58,8 +59,9 @@
             <div class="form-row">
                 <textarea name="message" placeholder="Message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn submit-btn">Submit</button>
+            <button type="submit" class="btn submit-btn" id="submit-btn">Submit</button>
         </form>
+        <p class="form-success" id="form-success" aria-live="polite" hidden>Thanks, I'll get back to you soon.</p>
     </section>
     <script src="js/main.js"></script>
 </body>
