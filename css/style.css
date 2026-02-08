@@ -101,6 +101,15 @@ body {
     color: var(--text);
     line-height: 1.6;
     scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Push footer to bottom when content is short */
+body > nav + section,
+body > nav + div {
+    flex: 1;
 }
 
 .navbar {
@@ -270,6 +279,27 @@ body {
   border-radius: 4px;
 }
 
+.blog-section {
+  padding: 4rem 10%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.blog-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.blog-section p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -290,6 +320,17 @@ footer .socials {
 
 
 /* Stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
 .star {
     position: absolute;
     top: 0;
