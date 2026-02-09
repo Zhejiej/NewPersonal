@@ -428,6 +428,12 @@ footer .socials {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
+.gallery .about-photo {
+  max-width: 280px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
