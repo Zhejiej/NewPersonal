@@ -11,8 +11,8 @@
         document.documentElement.setAttribute('data-theme', (s === 'dark' || (!s && d)) ? 'dark' : 'light');
       })();
     </script>
-    <meta name="description" content="Blog by Zhejie (Jacky) Jiang — monthly posts coming soon.">
-    <title>Blogs | Zhejie Jiang</title>
+    <meta name="description" content="Blog post — Zhejie (Jacky) Jiang">
+    <title>Blog Post | Zhejie Jiang</title>
     <link rel="icon" href="favicon.png" type="image/png">
 
     <link rel="stylesheet" href="css/style.css">
@@ -43,18 +43,18 @@
         </button>
     </nav>
 
-    <section class="blog-section" id="main-content">
-        <h2>Blog</h2>
-        <p id="blog-placeholder" class="blog-placeholder">Monthly blog coming soon.</p>
-        <div id="blog-list" class="blog-list" aria-live="polite"></div>
-    </section>
+    <main class="blog-post-wrapper" id="main-content">
+        <a href="blogs.html" class="blog-back-link">&larr; Back to Blog</a>
+        <p id="post-loading" class="blog-post-loading">Loading…</p>
+        <p id="post-error" class="blog-post-error" hidden>Post not found.</p>
+        <article id="post-content" class="blog-post-article" hidden></article>
+    </main>
 
     <script src="js/config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="js/blog-post.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Footer -->
     <footer>
         <div class="socials">
             <a href="https://www.linkedin.com/in/zhejie-jiang-9b7451284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
