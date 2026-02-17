@@ -16,7 +16,7 @@
   }
 
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  const TABLE = 'Blogs';
+  const TABLE = 'Journal';
 
   function formatDate(value) {
     if (!value) return '';
@@ -59,9 +59,9 @@
       }
       if (errorEl) errorEl.hidden = true;
       articleEl.innerHTML =
-        '<h1 class="blog-post-title">' + escapeHtml(post.title || 'Untitled') + '</h1>' +
-        (post.created_at ? '<time class="blog-post-date" datetime="' + escapeHtml(String(post.created_at)) + '">' + formatDate(post.created_at) + '</time>' : '') +
-        '<div class="blog-post-body">' + escapeHtml(post.body || '').replace(/\n/g, '<br>') + '</div>';
+        '<h1 class="journal-post-title">' + escapeHtml(post.title || 'Untitled') + '</h1>' +
+        (post.created_at ? '<time class="journal-post-date" datetime="' + escapeHtml(String(post.created_at)) + '">' + formatDate(post.created_at) + '</time>' : '') +
+        '<div class="journal-post-body">' + escapeHtml(post.body || '').replace(/\n/g, '<br>') + '</div>';
       articleEl.hidden = false;
     })
     .catch(function (err) {
