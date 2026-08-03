@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Update the base URL if your site is hosted somewhere else. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://zhejiej.github.io/NewPersonal/index.html</loc></url>
+  <url><loc>https://zhejiej.github.io/NewPersonal/about.html</loc></url>
+  <url><loc>https://zhejiej.github.io/NewPersonal/projects.html</loc></url>
+  <url><loc>https://zhejiej.github.io/NewPersonal/journal.html</loc></url>
+  <url><loc>https://zhejiej.github.io/NewPersonal/resume.html</loc></url>
+  <url><loc>https://zhejiej.github.io/NewPersonal/contact.html</loc></url>
+</urlset>

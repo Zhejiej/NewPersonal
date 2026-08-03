@@ -1,5 +1,5 @@
 /**
- * Portfolio shared behavior: nav active state, star animation (home only), bubbles.
+ * Portfolio shared behavior. Nav active state, star animation (home only), and bubbles.
  */
 const THEME_KEY = 'portfolio-theme';
 
@@ -15,7 +15,7 @@ function init(): void {
 }
 
 /**
- * Contact form: submit via fetch, then show success message without leaving the page.
+ * Contact form. Submit via fetch, then show the success message without leaving the page.
  */
 function initContactForm(): void {
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
@@ -63,7 +63,7 @@ function initContactForm(): void {
 }
 
 /**
- * Dark mode: apply saved or system preference, then wire toggle button.
+ * Dark mode. Apply saved or system preference, then wire the toggle button.
  */
 function initTheme(): void {
   const root = document.documentElement;
@@ -88,7 +88,7 @@ function initTheme(): void {
 }
 
 /**
- * Mobile nav: toggle menu when hamburger is clicked; close when a link is clicked.
+ * Mobile nav. Toggle the menu when the hamburger is clicked, and close it when a link is clicked.
  */
 function initMobileNav(): void {
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
@@ -110,7 +110,7 @@ function initMobileNav(): void {
 }
 
 /**
- * Set .active on the nav link that matches the current page.
+ * Set .active on the nav link that matches the current page filename.
  */
 function setNavActive(): void {
   const path = window.location.pathname;
@@ -131,7 +131,7 @@ function setNavActive(): void {
 }
 
 /**
- * Star animation: create falling stars, only when .stars container or page-home exists.
+ * Star animation. Create falling stars, only when the .stars container or page-home body class exists.
  */
 function startStarAnimation(): void {
   const starsContainer = document.querySelector('.stars');
@@ -153,7 +153,7 @@ function startStarAnimation(): void {
 }
 
 /**
- * Bubble effect: create a container and spawn bubble elements with random size/position/delay.
+ * Bubble effect. Create a container and spawn bubble elements with random size, position, and delay.
  */
 function initBubbles(): void {
   const existing = document.getElementById('bubbles-container');

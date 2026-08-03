@@ -1,19 +1,69 @@
 "use strict";
 /**
- * Portfolio shared behavior: nav active state, star animation (home only), bubbles.
+ * Portfolio shared behavior. Nav active state, star animation (home only), and bubbles.
  */
 const THEME_KEY = 'portfolio-theme';
 function init() {
     initTheme();
     setNavActive();
     initMobileNav();
+    initContactForm();
     if (document.body.classList.contains('page-home')) {
         startStarAnimation();
         initBubbles();
     }
 }
 /**
- * Dark mode: apply saved or system preference, then wire toggle button.
+ * Contact form. Submit via fetch, then show the success message without leaving the page.
+ */
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    const successEl = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    if (!form || !successEl)
+        return;
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!submitBtn)
+            return;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        const formData = new FormData(form);
+        fetch(form.action, { method: 'POST', body: formData })
+            .then((res) => res.json())
+            .then((data) => {
+            if (data.success) {
+                form.hidden = true;
+                successEl.hidden = false;
+            }
+            else {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+                if (successEl.previousElementSibling === form) {
+                    const err = document.createElement('p');
+                    err.className = 'form-error';
+                    err.setAttribute('role', 'alert');
+                    err.textContent = 'Something went wrong. Please try again or email directly.';
+                    form.after(err);
+                }
+            }
+        })
+            .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit';
+            const err = form.nextElementSibling;
+            if (err?.classList?.contains('form-error'))
+                return;
+            const errEl = document.createElement('p');
+            errEl.className = 'form-error';
+            errEl.setAttribute('role', 'alert');
+            errEl.textContent = 'Something went wrong. Please try again or email directly.';
+            form.after(errEl);
+        });
+    });
+}
+/**
+ * Dark mode. Apply saved or system preference, then wire the toggle button.
  */
 function initTheme() {
     const root = document.documentElement;
@@ -36,7 +86,7 @@ function initTheme() {
     });
 }
 /**
- * Mobile nav: toggle menu when hamburger is clicked; close when a link is clicked.
+ * Mobile nav. Toggle the menu when the hamburger is clicked, and close it when a link is clicked.
  */
 function initMobileNav() {
     const toggle = document.querySelector('.nav-toggle');
@@ -56,7 +106,7 @@ function initMobileNav() {
     });
 }
 /**
- * Set .active on the nav link that matches the current page.
+ * Set .active on the nav link that matches the current page filename.
  */
 function setNavActive() {
     const path = window.location.pathname;
@@ -77,7 +127,7 @@ function setNavActive() {
     });
 }
 /**
- * Star animation: create falling stars, only when .stars container or page-home exists.
+ * Star animation. Create falling stars, only when the .stars container or page-home body class exists.
  */
 function startStarAnimation() {
     const starsContainer = document.querySelector('.stars');
@@ -97,7 +147,7 @@ function startStarAnimation() {
     setInterval(createStar, 350);
 }
 /**
- * Bubble effect: create a container and spawn bubble elements with random size/position/delay.
+ * Bubble effect. Create a container and spawn bubble elements with random size, position, and delay.
  */
 function initBubbles() {
     const existing = document.getElementById('bubbles-container');
